@@ -3,7 +3,7 @@ name: Deploy to Azure App Service
 on:
     push:
         branches:
-         - hh
+         - master
 jobs: 
     build-and-deploy:
         runs-on: microsoft-latest
@@ -13,7 +13,7 @@ jobs:
          - name: Setup Node.js version
            uses: actions/setup-node@v4
            with: 
-            node-version: '8.x'
+            node-version: '18.x'
          - name: Install Dependencies
            run: npm install
          - name: Deploy to Azure App Service
