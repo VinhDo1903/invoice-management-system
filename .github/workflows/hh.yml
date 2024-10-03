@@ -3,7 +3,7 @@ name: Build and Deploy Node.js app to Azure Web App
 on:
   push:
     branches:
-      - main  # Thay đổi nếu bạn sử dụng nhánh khác
+      - master  # Thay đổi nếu bạn sử dụng nhánh khác
 
 jobs:
   build:
