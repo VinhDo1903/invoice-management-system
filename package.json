@@ -1,6 +1,6 @@
 {
   "name": "invoice-generator",
-  "author":"Rakesh Kumar Singh",
+  "author": "Rakesh Kumar Singh",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -26,7 +26,8 @@
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --passWithNoTests",
+    "update-browserslist": "npx browserslist@latest --update-db",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
