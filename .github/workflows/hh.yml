@@ -19,6 +19,6 @@ jobs:
          - name: Deploy to Azure App Service
            uses: azure/webapps-deploy@v2
            with:
-            app-name: invoicemanagent
+            app-name: invoicemanagent-bqb9gddbhea5ajfy
             publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
             package: .
