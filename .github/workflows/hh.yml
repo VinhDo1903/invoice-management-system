@@ -1,24 +1,36 @@
-name: Deploy to Azure App Service
+name: Build and Deploy Node.js app to Azure Web App
 
 on:
-    push:
-        branches:
-         - master
-jobs: 
-    build-and-deploy:
-        runs-on: windows-latest
-        steps:
-         - name: Checkout Source
-           uses: actions/checkout@v3
-         - name: Setup Node.js version
-           uses: actions/setup-node@v4
-           with: 
-            node-version: '18.x'
-         - name: Install Dependencies
-           run: npm install
-         - name: Deploy to Azure App Service
-           uses: azure/webapps-deploy@v2
-           with:
-            app-name: invoicemanagent-bqb9gddbhea5ajfy
-            publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-            package: .
+  push:
+    branches:
+      - main  # Thay đổi nếu bạn sử dụng nhánh khác
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'  # Chọn phiên bản Node.js mà bạn đang sử dụng
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Update Browserslist
+        run: npm run update-browserslist
+
+      - name: Build the project
+        run: npm run build
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: invoicemanagent-bqb9gddbhea5ajfy  # Tên ứng dụng Azure của bạn
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}  # Publish profile được lưu trong GitHub Secrets
+          package: build  # Chỉ định thư mục chứa các file đã được xây dựng
