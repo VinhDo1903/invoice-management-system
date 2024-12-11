@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18.x'  # Chọn phiên bản Node.js mà bạn đang sử dụng
+          node-version: '18.x'  # Chọn phiên bảnNode.js mà bạn đang sử dụng
           cache: 'npm'
 
       - name: Install dependencies
